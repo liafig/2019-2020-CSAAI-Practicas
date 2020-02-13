@@ -1,0 +1,45 @@
+body {
+  padding: 10px;
+  border: solid;
+  border-color: white;
+  margin: 10px;
+  background-image: url("fondo.jpg");
+  color: white;
+}
+
+h1 {
+  font-size: 50px;
+  color: white;
+  font-family: 'Homemade Apple', cursive;
+  text-align: center;
+}
+
+h2 {
+  color: white;
+  font-family: 'Homemade Apple', cursive;
+  text-align: center;
+}
+
+h3 {
+  color: white;
+  font-family: 'Homemade Apple', cursive;
+  text-align: center;
+}
+
+div {
+  color: darkblue;
+  text-align: center;
+  background-image: image("nube.png");
+}
+
+ul {
+  font-family: 'Gentium Book Basic', serif;
+}
+
+p {
+  padding: 10px;
+  border: solid;
+  border-color: #366074;
+  margin: 10px;
+  font-family: 'Gentium Book Basic', serif;
+}
