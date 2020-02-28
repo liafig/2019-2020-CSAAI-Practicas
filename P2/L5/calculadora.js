@@ -8,7 +8,7 @@ clearlast = document.getElementById("clearlast")
 
 let digitos=document.getElementsByClassName("cdigito")
 
-for (i=0; i<digitos.length; i++){
+for(i = 0; i < digitos.length; i++){
   digitos[i].onclick = (ev) =>{
     digito(ev.target);
   }
@@ -16,7 +16,7 @@ for (i=0; i<digitos.length; i++){
 
 let operadores=document.getElementsByClassName("operador")
 
-for (i=0; i<operadores.length; i++){
+for(i = 0; i < operadores.length; i++){
   operadores[i].onclick = (ev) =>{
     display.innerHTML += ev.target.value;
   }
@@ -24,7 +24,7 @@ for (i=0; i<operadores.length; i++){
 
 function digito(boton)
 {
-  if(display.innerHTML=="0"){
+  if(display.innerHTML == "0"){
     display.innerHTML = boton.value;
   }else{
   display.innerHTML += boton.value;
@@ -38,7 +38,7 @@ igual.onclick = () => {
 
 //-- Borrar último dígito
 clearlast.onclick = () => {
-  if(display.innerHTML=="0"){
+  if(display.innerHTML == "0"){
     display.innerHTML = "0";
   }else{
     display.innerHTML = display.innerHTML.substring(0, display.innerHTML.length - 1);
