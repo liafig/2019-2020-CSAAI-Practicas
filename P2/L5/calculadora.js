@@ -38,7 +38,11 @@ igual.onclick = () => {
 
 //-- Borrar último dígito
 clearlast.onclick = () => {
-  display.innerHTML = 1;
+  if(display.innerHTML=="0"){
+    display.innerHTML = "0";
+  }else{
+    display.innerHTML = display.innerHTML.substring(0, display.innerHTML.length - 1);
+  }
 }
 
 //-- Poner a cero la expresion
