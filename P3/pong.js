@@ -40,17 +40,73 @@ function draw() {
   //--------- Dibujar la red
   ctx.beginPath();
 
-  //-- Estilo de la linea: discontinua
-  //-- Trazos de 10 pixeles, y 10 de separacion
-  ctx.setLineDash([10, 10]);
+  //-- Linea de medio campo
+  ctx.lineTo(200, 200);
   ctx.strokeStyle = "white";
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 6;
+
   //-- Punto superior de la linea. Su coordenada x está en la mitad
   //-- del canvas
   ctx.moveTo(canvas.width/2, 0);
 
   //-- Dibujar hasta el punto inferior
   ctx.lineTo(canvas.width/2, canvas.height);
+  ctx.stroke();
+
+  //-- Círculo de medio campo
+
+  ctx.beginPath();
+  ctx.arc(canvas.width/2, canvas.height/2, 50, 0, 2 * Math.PI);
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 6;
+  ctx.stroke();
+
+  //-- Porterías
+  ctx.beginPath();
+  ctx.moveTo(0, canvas.height/4);
+  ctx.lineTo(40, canvas.height/4);
+  ctx.lineTo(40, 3*canvas.height/4);
+  ctx.lineTo(0, 3*canvas.height/4);
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 6;
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(canvas.width, canvas.height/4);
+  ctx.lineTo(canvas.width-40, canvas.height/4);
+  ctx.lineTo(canvas.width-40, 3*canvas.height/4);
+  ctx.lineTo(canvas.width, 3*canvas.height/4);
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 6;
+  ctx.stroke();
+
+  //-- Área penalti
+  ctx.beginPath();
+  ctx.moveTo(0, canvas.height/6);
+  ctx.lineTo(120, canvas.height/6);
+  ctx.lineTo(120, 5*canvas.height/6);
+  ctx.lineTo(0, 5*canvas.height/6);
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 6;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(120, canvas.height/2, 50, -1.5, -1.5 * Math.PI);
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 6;
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(canvas.width, canvas.height/6);
+  ctx.lineTo(canvas.width-120, canvas.height/6);
+  ctx.lineTo(canvas.width-120, 5*canvas.height/6);
+  ctx.lineTo(canvas.width, 5*canvas.height/6);
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 6;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(canvas.width-120, canvas.height/2, 50, 1.5, 1.5 * Math.PI);
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 6;
   ctx.stroke();
 
   //------ Dibujar el tanteo
@@ -69,7 +125,7 @@ function draw() {
   //-- Dibujar el texto de comenzar
   if (estado == ESTADO.INIT) {
     ctx.font = "40px Arial";
-    ctx.fillStyle = "green";
+    ctx.fillStyle = "black";
     ctx.fillText("Pulsa Start!", 30, 350);
   }
 }
