@@ -5,7 +5,7 @@ const canvas = document.getElementById("canvas");
 
 //-- Sus dimensiones las hemos fijado en el fichero
 //-- HTML. Las imprimimos en la consola
-console.log("canvas: Anchura: ${canvas.width}, Altura: ${canvas.height}"");
+console.log("canvas: Anchura: ${canvas.width}, Altura: ${canvas.height}");
 
 //-- Obtener el contexto para pintar en el canvas
 const ctx = canvas.getContext("2d");
@@ -124,9 +124,6 @@ function animacion()
 
   //-- Dibujar el nuevo frame
   draw();
-
-  //-- Función que genera el bucle de animación
-  window.requestAnimationFrame(animacion);
 }
 
 //-- Inicializa la bola: Llevarla a su posicion inicial
@@ -140,6 +137,11 @@ const raqD = new Raqueta(ctx);
 raqD.x_ini = 540;
 raqD.y_ini = 300;
 raqD.init();
+
+//-- Arrancar la animación
+setInterval(()=>{
+  animacion();
+},16);
 
 //-- Retrollamada de las teclas
 window.onkeydown = (e) => {
