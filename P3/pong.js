@@ -125,8 +125,8 @@ function draw() {
   //-- Dibujar el texto de comenzar
   if (estado == ESTADO.INIT) {
     ctx.font = "40px Arial";
-    ctx.fillStyle = "black";
-    ctx.fillText("Pulsa Start!", 30, 350);
+    ctx.fillStyle = "white";
+    ctx.fillText("Pulsa Start!", 30, 390);
   }
 }
 
