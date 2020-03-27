@@ -154,8 +154,6 @@ function animacion()
     bola.init();
     cont1 ++
     console.log(cont1);
-    sonido_rebote.currentTime = 0;
-    sonido_rebote.play();
     sonido_tanto.currentTime = 0;
     sonido_tanto.play();
 
@@ -164,8 +162,6 @@ function animacion()
     bola.init()
     cont2 ++
     console.log(cont2);
-    sonido_rebote.currentTime = 0;
-    sonido_rebote.play();
     sonido_tanto.currentTime = 0;
     sonido_tanto.play();
   }else if (bola.y >= canvas.height) {
