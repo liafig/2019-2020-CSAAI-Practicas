@@ -15,7 +15,7 @@ class Bola {
     this.y = 0;
 
     //-- Velocidad inicial de la bola
-    this.vx_ini = 4;
+    this.vx_ini = 2;
     this.vy_ini = 2;
 
     //-- Velocidad genérica de la bola
@@ -30,7 +30,7 @@ class Bola {
   draw() {
     //----- Dibujar la Bola
     this.ctx.beginPath();
-    this.ctx.fillStyle='white';
+    this.ctx.fillStyle="white";
 
     //-- x,y, anchura, altura
     this.ctx.rect(this.x, this.y, this.size, this.size);
