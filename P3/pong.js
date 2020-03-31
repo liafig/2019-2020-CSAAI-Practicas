@@ -11,9 +11,9 @@ console.log(`canvas: Anchura: ${canvas.width}, Altura: ${canvas.height}`);
 const ctx = canvas.getContext("2d");
 
 //-- Obtener Sonidos
-const sonido_raqueta = new Audio("pong-raqueta.mp3");
-const sonido_rebote = new Audio("pong-rebote.mp3");
-const sonido_tanto = new Audio("pong-tanto.mp3");
+const sonido_raqueta = new Audio("patada.mp3");
+const sonido_rebote = new Audio("pitido.mp3");
+const sonido_tanto = new Audio("gol.mp3");
 
 //-- Estados del juego
 const ESTADO = {
