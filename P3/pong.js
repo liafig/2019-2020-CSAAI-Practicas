@@ -31,7 +31,7 @@ let estado = ESTADO.INIT;
 function draw() {
   //----- Dibujar la Bola
   //-- Solo en el estado de jugando
-  if (estado == ESTADO.JUGANDO) {
+  if(estado == ESTADO.JUGANDO) {
     bola.draw();
   }
 
@@ -111,15 +111,23 @@ function draw() {
   ctx.lineWidth = 6;
   ctx.stroke();
 
+  //-- Detalles marcador
+  ctx.beginPath();
+  ctx.moveTo(250, 40);
+  ctx.lineTo(250, 42);
+  ctx.strokeStyle = "black";
+  ctx.lineWidth = 10;
+  ctx.stroke();
+
   //-- Dibujar el texto de sacar
-  if (estado == ESTADO.SAQUE || estado == ESTADO.SAQUEDE) {
+  if(estado == ESTADO.SAQUE || estado == ESTADO.SAQUEDE) {
     ctx.font = "40px Arial";
     ctx.fillStyle = "white";
     ctx.fillText("Saca!", 30, 390);
   }
 
   //-- Dibujar el texto de comenzar
-  if (estado == ESTADO.INIT) {
+  if(estado == ESTADO.INIT) {
     ctx.font = "40px Arial";
     ctx.fillStyle = "white";
     ctx.fillText("Pulsa Start!", 30, 390);
@@ -130,11 +138,43 @@ function draw() {
 var cont1 = 0;
 var cont2 = 0;
 function drawScore(){
-  ctx.font = "80px Arial";
-  ctx.fillStyle = "white";
-  ctx.fillText(cont1, 220, 80);
-  ctx.fillText(cont2, 340, 80);
+  ctx.beginPath();
+  ctx.fillRect(210, 20, 180, 40);
+  ctx.stroke();
+  ctx.font = "40px Arial";
+  ctx.fillStyle = "black";
+  ctx.fillText(cont1, 220, 54);
+  ctx.fillText(cont2, 258, 54);
 }
+
+//-- Cronómetro
+var min = 0;
+var sec = 0;
+function cron(){
+  if(estado == ESTADO.JUGANDO) {
+    sec ++
+    if(sec < 10) {
+      sec = "0" + sec;
+    }
+    if(sec > 59) {
+      sec = "00"
+      min ++
+      if(min < 10) {
+        min = "0" + min
+      }
+    }
+    ctx.font = "30px Arial";
+    ctx.fillText(`${min}:${sec}`, 310, 50);
+  }else{
+    ctx.font = "30px Arial";
+    ctx.fillText(`00:00`, 310, 50);
+    if(estado == ESTADO.SAQUE || estado == ESTADO.SAQUEDE) {
+      sec = 0;
+      min = 0;
+    }
+  }
+}
+
 
 //---- Bucle principal de la animación
 function animacion()
@@ -149,7 +189,7 @@ function animacion()
   //-- Comprobar si la bola ha alcanzado el límite derecho
   //-- Si es así, se cambia de signo la velocidad, para
   // que "rebote" y vaya en el sentido opuesto
-  if (bola.x >= canvas.width) {
+  if(bola.x >= canvas.width) {
     //-- Hay colisión. Cambiar el signo de la bola
     estado = ESTADO.SAQUEDE;
     bola.initde();
@@ -165,11 +205,11 @@ function animacion()
     console.log(cont2);
     sonido_tanto.currentTime = 0;
     sonido_tanto.play();
-  }else if (bola.y >= canvas.height) {
+  }else if(bola.y >= canvas.height) {
     bola.vy = bola.vy * -1;
     sonido_rebote.currentTime = 0;
     sonido_rebote.play();
-  }else if (bola.y <= 0.0) {
+  }else if(bola.y <= 0.0) {
     bola.vy = bola.vy * -1;
     sonido_rebote.currentTime = 0;
     sonido_rebote.play();
@@ -213,6 +253,7 @@ function animacion()
 
   //-- Dibujar el nuevo frame y el marcador
   drawScore();
+  cron();
   draw();
 
   window.requestAnimationFrame(animacion);
