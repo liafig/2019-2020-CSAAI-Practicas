@@ -3,8 +3,7 @@ console.log("Ejecutando JS...");
 //-- Obtener el objeto canvas
 const canvas = document.getElementById("canvas");
 
-//-- Sus dimensiones las hemos fijado en el fichero
-//-- HTML. Las imprimimos en la consola
+//-- Imprimimos las dimensiones del canvas en la consola
 console.log(`canvas: Anchura: ${canvas.width}, Altura: ${canvas.height}`);
 
 //-- Obtener el contexto para pintar en el canvas
@@ -23,7 +22,6 @@ const ESTADO = {
   SAQUEDE: 3,
 }
 
-//-- Variable de estado
 //-- Arrancamos desde el estado inicial
 let estado = ESTADO.INIT;
 
@@ -39,24 +37,18 @@ function draw() {
   raqI.draw();
   raqD.draw();
 
-  //--------- Dibujar la red
+  //-- Dibujar la red
   ctx.beginPath();
 
   //-- Linea de medio campo
   ctx.lineTo(200, 200);
   ctx.strokeStyle = "white";
   ctx.lineWidth = 6;
-
-  //-- Punto superior de la linea. Su coordenada x está en la mitad
-  //-- del canvas
   ctx.moveTo(canvas.width/2, 0);
-
-  //-- Dibujar hasta el punto inferior
   ctx.lineTo(canvas.width/2, canvas.height);
   ctx.stroke();
 
   //-- Círculo de medio campo
-
   ctx.beginPath();
   ctx.arc(canvas.width/2, canvas.height/2, 50, 0, 2 * Math.PI);
   ctx.strokeStyle = "white";
@@ -175,14 +167,9 @@ function cron(){
   }
 }
 
-
 //---- Bucle principal de la animación
 function animacion()
 {
-
-  //-- Actualizar las posiciones de los objetos móviles
-
-  //-- Actualizar la raqueta con la velocidad actual
   raqI.update();
   raqD.update();
 
@@ -190,14 +177,12 @@ function animacion()
   //-- Si es así, se cambia de signo la velocidad, para
   // que "rebote" y vaya en el sentido opuesto
   if(bola.x >= canvas.width) {
-    //-- Hay colisión. Cambiar el signo de la bola
     estado = ESTADO.SAQUEDE;
     bola.initde();
     cont1 ++
     console.log(cont1);
     sonido_tanto.currentTime = 0;
     sonido_tanto.play();
-
   }else if(bola.x <= 0.0){
     estado = ESTADO.SAQUE;
     bola.init()
@@ -218,9 +203,7 @@ function animacion()
   //-- Comprobar si hay colisión con la raqueta izquierda
   if (bola.x >= raqI.x && bola.x <=(raqI.x + raqI.width) &&
       bola.y >= raqI.y && bola.y <=(raqI.y + raqI.height)) {
-      bola.vx = bola.vx * -1;
-
-    //-- Reproducir sonido
+    bola.vx = bola.vx * -1;
     sonido_raqueta.currentTime = 0;
     sonido_raqueta.play();
   }
@@ -228,9 +211,7 @@ function animacion()
   //-- Comprobar si hay colisión con la raqueta derecha
   if (bola.x >= raqD.x && bola.x <=(raqD.x + raqD.width) &&
       bola.y >= raqD.y && bola.y <=(raqD.y + raqD.height)) {
-      bola.vx = bola.vx * -1;
-
-    //-- Reproducir sonido
+    bola.vx = bola.vx * -1;
     sonido_raqueta.currentTime = 0;
     sonido_raqueta.play();
   }
@@ -244,14 +225,13 @@ function animacion()
      raqD.y = raqD.y * -1;
    }
 
-  //-- Actualizar coordenada x de la bola, en funcion de
-  //-- su velocidad
+  //-- Actualizar coordenada x de la bola
   bola.update()
 
   //-- Borrar la pantalla
   ctx.clearRect(0,0, canvas.width, canvas.height);
 
-  //-- Dibujar el nuevo frame y el marcador
+  //-- Dibujar el nuevo frame, el marcador y el cronómetro
   drawScore();
   cron();
   draw();
@@ -265,7 +245,6 @@ const bola = new Bola(ctx);
 //-- Crear las raquetas
 const raqI = new Raqueta(ctx);
 const raqD = new Raqueta(ctx);
-
 raqI.init();
 
 //-- Cambiar las coordenadas de la raqueta derecha
@@ -279,8 +258,6 @@ animacion();
 //-- Retrollamada de las teclas
 window.onkeydown = (e) => {
 
-  //-- En el estado inicial no se
-  //-- hace caso de las teclas
   if (estado == ESTADO.INIT)
     return;
 
@@ -298,37 +275,30 @@ window.onkeydown = (e) => {
       raqD.v = raqD.v_ini;
       break;
     case "s":
-      //-- El saque solo funciona en el estado de SAQUE
+
       if (estado == ESTADO.SAQUE) {
         //-- Reproducir sonido
         sonido_raqueta.currentTime = 0;
         sonido_raqueta.play();
 
-        //-- Llevar bola a su posicion incicial
+        //-- Llevar bola a su posicion inicial
         bola.init();
 
         //-- Darle velocidad
         bola.vx = bola.vx_ini;
         bola.vy = bola.vy_ini;
+
         //-- Cambiar al estado de jugando!
         estado = ESTADO.JUGANDO;
-
         return false;
       }
       if (estado == ESTADO.SAQUEDE) {
-        //-- Reproducir sonido
         sonido_raqueta.currentTime = 0;
         sonido_raqueta.play();
-
-        //-- Llevar bola a su posicion incicial
         bola.initde();
-
-        //-- Darle velocidad
         bola.vx = bola.vx_inide;
         bola.vy = bola.vy_inide;
-        //-- Cambiar al estado de jugando!
         estado = ESTADO.JUGANDO;
-
         return false;
       }
     default:
@@ -356,7 +326,7 @@ start.onclick = () => {
   canvas.focus();
 }
 
-//-- Boton de stop
+//-- Botón de stop
 const stop = document.getElementById("stop");
 
 stop.onclick = () => {
