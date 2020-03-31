@@ -41,7 +41,7 @@ class Bola {
     this.ctx.fillStyle = "white";
 
     //-- x,y, anchura, altura
-    this.ctx.rect(this.x, this.y, this.size, this.size);
+    this.ctx.arc(this.x, this.y, this.size, 0, 2*Math.PI);
     this.ctx.fill();
   }
 
