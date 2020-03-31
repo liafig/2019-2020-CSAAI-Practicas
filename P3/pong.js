@@ -20,6 +20,7 @@ const ESTADO = {
   INIT: 0,
   SAQUE: 1,
   JUGANDO: 2,
+  SAQUEDE: 3,
 }
 
 //-- Variable de estado
@@ -111,7 +112,7 @@ function draw() {
   ctx.stroke();
 
   //-- Dibujar el texto de sacar
-  if (estado == ESTADO.SAQUE) {
+  if (estado == ESTADO.SAQUE || estado == ESTADO.SAQUEDE) {
     ctx.font = "40px Arial";
     ctx.fillStyle = "white";
     ctx.fillText("Saca!", 30, 390);
@@ -150,8 +151,8 @@ function animacion()
   // que "rebote" y vaya en el sentido opuesto
   if (bola.x >= canvas.width) {
     //-- Hay colisión. Cambiar el signo de la bola
-    estado = ESTADO.SAQUE;
-    bola.init();
+    estado = ESTADO.SAQUEDE;
+    bola.initde();
     cont1 ++
     console.log(cont1);
     sonido_tanto.currentTime = 0;
@@ -268,6 +269,22 @@ window.onkeydown = (e) => {
         //-- Darle velocidad
         bola.vx = bola.vx_ini;
         bola.vy = bola.vy_ini;
+        //-- Cambiar al estado de jugando!
+        estado = ESTADO.JUGANDO;
+
+        return false;
+      }
+      if (estado == ESTADO.SAQUEDE) {
+        //-- Reproducir sonido
+        sonido_raqueta.currentTime = 0;
+        sonido_raqueta.play();
+
+        //-- Llevar bola a su posicion incicial
+        bola.initde();
+
+        //-- Darle velocidad
+        bola.vx = bola.vx_inide;
+        bola.vy = bola.vy_inide;
         //-- Cambiar al estado de jugando!
         estado = ESTADO.JUGANDO;
 
