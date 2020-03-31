@@ -27,11 +27,6 @@ let estado = ESTADO.INIT;
 
 //-- Pintar todos los objetos en el canvas
 function draw() {
-  //----- Dibujar la Bola
-  //-- Solo en el estado de jugando
-  if(estado == ESTADO.JUGANDO) {
-    bola.draw();
-  }
 
   //-- Dibujar las raquetas
   raqI.draw();
@@ -109,7 +104,15 @@ function draw() {
   ctx.lineTo(250, 42);
   ctx.strokeStyle = "black";
   ctx.lineWidth = 10;
+  ctx.fillRect(210, 20, 180, 40);
+  ctx.fillStyle = "white";
   ctx.stroke();
+
+  //----- Dibujar la Bola
+  //-- Solo en el estado de jugando
+  if(estado == ESTADO.JUGANDO) {
+    bola.draw();
+  }
 
   //-- Dibujar el texto de sacar
   if(estado == ESTADO.SAQUE || estado == ESTADO.SAQUEDE) {
@@ -130,9 +133,6 @@ function draw() {
 var cont1 = 0;
 var cont2 = 0;
 function drawScore(){
-  ctx.beginPath();
-  ctx.fillRect(210, 20, 180, 40);
-  ctx.stroke();
   ctx.font = "40px Arial";
   ctx.fillStyle = "black";
   ctx.fillText(cont1, 220, 54);
@@ -232,9 +232,10 @@ function animacion()
   ctx.clearRect(0,0, canvas.width, canvas.height);
 
   //-- Dibujar el nuevo frame, el marcador y el cronómetro
+
+  draw();
   drawScore();
   cron();
-  draw();
 
   window.requestAnimationFrame(animacion);
 }

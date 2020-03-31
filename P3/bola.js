@@ -41,7 +41,11 @@ class Bola {
     this.ctx.fillStyle = "white";
 
     //-- x,y, anchura, altura
-    this.ctx.arc(this.x, this.y, this.size, 0, 2*Math.PI);
+    var img = new Image();
+    img.src = "balon.jpg";
+    var pat = ctx.createPattern(img, "repeat");
+    this.ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+    this.ctx.fillStyle = pat;
     this.ctx.fill();
   }
 
