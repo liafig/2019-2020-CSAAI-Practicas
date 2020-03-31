@@ -148,29 +148,29 @@ function drawScore(){
 }
 
 //-- Cronómetro
-var min = 0;
+var micro = 0;
 var sec = 0;
 function cron(){
   if(estado == ESTADO.JUGANDO) {
-    sec ++
-    if(sec < 10) {
-      sec = "0" + sec;
+    micro ++
+    if(micro < 10) {
+      micro = "0" + micro;
     }
-    if(sec > 59) {
-      sec = "00"
-      min ++
-      if(min < 10) {
-        min = "0" + min
+    if(micro > 59) {
+      micro= "00"
+      sec ++
+      if(sec < 10) {
+        sec = "0" + sec
       }
     }
     ctx.font = "30px Arial";
-    ctx.fillText(`${min}:${sec}`, 310, 50);
+    ctx.fillText(`${sec}:${micro}`, 310, 50);
   }else{
     ctx.font = "30px Arial";
-    ctx.fillText(`00:00`, 310, 50);
+    ctx.fillText("00:00", 310, 50);
     if(estado == ESTADO.SAQUE || estado == ESTADO.SAQUEDE) {
+      micro = 0;
       sec = 0;
-      min = 0;
     }
   }
 }
