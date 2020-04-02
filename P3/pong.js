@@ -100,10 +100,6 @@ function draw() {
 
   //-- Detalles marcador
   ctx.beginPath();
-  ctx.moveTo(252, 40);
-  ctx.lineTo(252, 42);
-  ctx.strokeStyle = "black";
-  ctx.lineWidth = 10;
   ctx.fillRect(210, 20, 180, 40);
   ctx.fillStyle = "white";
   ctx.stroke();
@@ -134,8 +130,7 @@ var cont2 = 0;
 function drawScore(){
   ctx.font = "40px 'Do Hyeon', sans-serif";
   ctx.fillStyle = "black";
-  ctx.fillText(cont1, 221, 54);
-  ctx.fillText(cont2, 261, 54);
+  ctx.fillText(`${cont1}-${cont2}`, 222, 54);
 }
 
 //-- Cronómetro
