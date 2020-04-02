@@ -100,8 +100,8 @@ function draw() {
 
   //-- Detalles marcador
   ctx.beginPath();
-  ctx.moveTo(250, 40);
-  ctx.lineTo(250, 42);
+  ctx.moveTo(252, 40);
+  ctx.lineTo(252, 42);
   ctx.strokeStyle = "black";
   ctx.lineWidth = 10;
   ctx.fillRect(210, 20, 180, 40);
@@ -109,23 +109,22 @@ function draw() {
   ctx.stroke();
 
   //----- Dibujar la Bola
-  //-- Solo en el estado de jugando
   if(estado == ESTADO.JUGANDO) {
     bola.draw();
   }
 
   //-- Dibujar el texto de sacar
   if(estado == ESTADO.SAQUE || estado == ESTADO.SAQUEDE) {
-    ctx.font = "40px Arial";
+    ctx.font = "40px 'Do Hyeon', sans-serif";
     ctx.fillStyle = "white";
-    ctx.fillText("Saca!", 30, 390);
+    ctx.fillText("Saca!", 30, 380);
   }
 
   //-- Dibujar el texto de comenzar
   if(estado == ESTADO.INIT) {
-    ctx.font = "40px Arial";
+    ctx.font = "40px 'Do Hyeon', sans-serif";
     ctx.fillStyle = "white";
-    ctx.fillText("Pulsa Start!", 30, 390);
+    ctx.fillText("Pulsa Start!", 30, 380);
   }
 }
 
@@ -133,10 +132,10 @@ function draw() {
 var cont1 = 0;
 var cont2 = 0;
 function drawScore(){
-  ctx.font = "40px Arial";
+  ctx.font = "40px 'Do Hyeon', sans-serif";
   ctx.fillStyle = "black";
-  ctx.fillText(cont1, 220, 54);
-  ctx.fillText(cont2, 258, 54);
+  ctx.fillText(cont1, 221, 54);
+  ctx.fillText(cont2, 261, 54);
 }
 
 //-- Cronómetro
@@ -155,11 +154,11 @@ function cron(){
         sec = "0" + sec
       }
     }
-    ctx.font = "30px Arial";
-    ctx.fillText(`${sec}:${micro}`, 310, 50);
+    ctx.font = "30px 'Do Hyeon', sans-serif";
+    ctx.fillText(`${sec}:${micro}`, 311, 50);
   }else{
-    ctx.font = "30px Arial";
-    ctx.fillText("00:00", 310, 50);
+    ctx.font = "30px 'Do Hyeon', sans-serif";
+    ctx.fillText("00:00", 311, 50);
     if(estado == ESTADO.SAQUE || estado == ESTADO.SAQUEDE) {
       micro = 0;
       sec = 0;
