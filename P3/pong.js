@@ -167,23 +167,33 @@ function animacion()
   raqI.update();
   raqD.update();
 
-  //-- Comprobar si la bola ha alcanzado el límite derecho
-  //-- Si es así, se cambia de signo la velocidad, para
-  // que "rebote" y vaya en el sentido opuesto
+  //-- Comprobar si la bola ha alcanzado portería o algún límite
   if(bola.x >= canvas.width) {
-    estado = ESTADO.SAQUEDE;
-    bola.initde();
-    cont1 ++
-    console.log(cont1);
-    sonido_tanto.currentTime = 0;
-    sonido_tanto.play();
+    if(bola.y >= canvas.height/4 && bola.y <= 3*canvas.height/4) {
+      estado = ESTADO.SAQUEDE;
+      bola.initde();
+      cont1 ++
+      console.log(cont1);
+      sonido_tanto.currentTime = 0;
+      sonido_tanto.play();
+    }else{
+      bola.vx = bola.vx * -1;
+      sonido_rebote.currentTime = 0;
+      sonido_rebote.play();
+    }
   }else if(bola.x <= 0.0){
-    estado = ESTADO.SAQUE;
-    bola.init()
-    cont2 ++
-    console.log(cont2);
-    sonido_tanto.currentTime = 0;
-    sonido_tanto.play();
+    if(bola.y >= canvas.height/4 && bola.y <= 3*canvas.height/4) {
+      estado = ESTADO.SAQUE;
+      bola.init()
+      cont2 ++
+      console.log(cont2);
+      sonido_tanto.currentTime = 0;
+      sonido_tanto.play();
+    }else{
+      bola.vx = bola.vx * -1;
+      sonido_rebote.currentTime = 0;
+      sonido_rebote.play();
+    }
   }else if(bola.y >= canvas.height) {
     bola.vy = bola.vy * -1;
     sonido_rebote.currentTime = 0;
