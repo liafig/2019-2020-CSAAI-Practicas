@@ -290,8 +290,8 @@ window.onkeydown = (e) => {
         bola.init();
 
         //-- Darle velocidad
-        bola.vx = bola.vx_ini;
-        bola.vy = bola.vy_ini;
+        bola.vx = Math.floor(Math.random() * (5 - 2 + 1) + 2);
+        bola.vy = Math.floor(Math.random() * (5 - 2 + 1) + 2);
 
         //-- Cambiar al estado de jugando!
         estado = ESTADO.JUGANDO;
@@ -301,8 +301,8 @@ window.onkeydown = (e) => {
         sonido_raqueta.currentTime = 0;
         sonido_raqueta.play();
         bola.initde();
-        bola.vx = bola.vx_inide;
-        bola.vy = bola.vy_inide;
+        bola.vx = Math.floor(Math.random() * (-5 + (-2 + 1)) - 2);
+        bola.vy = Math.floor(Math.random() * (5 - 2 + 1) + 2);
         estado = ESTADO.JUGANDO;
         return false;
       }

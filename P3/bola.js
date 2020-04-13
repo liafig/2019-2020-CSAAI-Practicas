@@ -18,14 +18,6 @@ class Bola {
     this.x = 0;
     this.y = 0;
 
-    //-- Velocidad inicial de la bola izquierda
-    this.vx_ini = 2;
-    this.vy_ini = 2;
-
-    //-- Velocidad inicial de la bola derecha
-    this.vx_inide = -2;
-    this.vy_inide = 2;
-
     //-- Velocidad genérica de la bola
     //-- Inicialmente a cero
     this.vx = 0;
