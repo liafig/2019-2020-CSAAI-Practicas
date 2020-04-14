@@ -30,6 +30,13 @@ const play2 = document.getElementById("play2")
 const play3 = document.getElementById("play3")
 const stop = document.getElementById("stop")
 
+init.onclick = () => {
+  console.log("Click!");
+  video1.play();
+  video2.play();
+  video3.play();
+};
+
 //-- Función de retrollamada del botón de ver
 play1.onclick = () => {
   console.log("Click!");
