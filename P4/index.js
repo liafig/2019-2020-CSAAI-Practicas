@@ -41,18 +41,21 @@ init.onclick = () => {
 play1.onclick = () => {
   console.log("Click!");
   monitor.src=video1.src;
+  monitor.currentTime = video1.currentTime;
   monitor.play();
 };
 
 play2.onclick = () => {
   console.log("Click!");
   monitor.src=video2.src;
+  monitor.currentTime = video2.currentTime;
   monitor.play();
 };
 
 play3.onclick = () => {
   console.log("Click!");
   monitor.src=video3.src;
+  monitor.currentTime = video3.currentTime;
   monitor.play();
 };
 
