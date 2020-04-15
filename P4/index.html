@@ -3,25 +3,35 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
     <title>VIDEO</title>
     <script src="index.js" defer></script>
   </head>
   <body>
     <p>Dua Lipa</p>
     <div style="text-align:center;">
-      <video loop id="monitor"></video>
-      <br>
-      <button id="init">INIT</button>
+      <section class="container">
+        <div class="monitor">
+          <video loop id="monitor"></video>
+        </div>
+        <div class="top_buttons">
+          <button id="init">Init</button>
+          <br><br>
+          <button id="manual">Manual</button>
+          <br><br>
+          <button id="auto">Automático</button>
+          <br><br>
+          <button id="stop">Parar</button>
+        </div>
+      </section>
       <br>
       <video loop muted id="video1"></video>
       <video loop muted id="video2"></video>
       <video loop muted id="video3"></video>
       <br>
-      <button id="play1">SELECCIONAR</button>
-      <button id="play2">SELECCIONAR</button>
-      <button id="play3">SELECCIONAR</button>
-      <br>
-      <button id="stop">Parar</button>
+      <button id="play1" class="one">Seleccionar</button>
+      <button id="play2" class="two">Seleccionar</button>
+      <button id="play3" class="three">Seleccionar</button>
     </div>
   </body>
 </html>

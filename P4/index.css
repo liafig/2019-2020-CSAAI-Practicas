@@ -1,0 +1,48 @@
+body {
+  background-color: black;
+}
+
+button {
+	background-color:#f0c911;
+	border-radius:6px;
+	border:1px solid #e65f44;
+	display:inline-block;
+	color:#c92200;
+	font-family:'Faster One', cursive;
+	font-size:17px;
+	padding:3px 7px 5px;
+}
+
+.container {
+  width: 60%;
+  height: 320px;
+  margin: auto;
+  padding: 10px;
+}
+
+.monitor {
+  width: 75%;
+  height: 300px;
+  float: left;
+}
+
+.top_buttons {
+  text-align: left;
+  margin-left: 70px;
+  margin-top: 70px;
+  height: 200px;
+}
+
+.one {
+  margin-right: 160px;
+  margin-top: 6px;
+}
+
+.two {
+  margin-right: 160px;
+  margin-top: 6px;
+}
+
+.three {
+  margin-top: 6px;
+}
