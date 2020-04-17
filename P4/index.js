@@ -93,14 +93,27 @@ auto.onclick = () => {
   document.getElementById("play2").disabled=true;
   document.getElementById("play3").disabled=true;
   document.getElementById("test").disabled=true;
-}
-
-manual.onclick = () => {
-  console.log("Manual");
-  document.getElementById("play1").disabled=false;
-  document.getElementById("play2").disabled=false;
-  document.getElementById("play3").disabled=false;
-  document.getElementById("test").disabled=false;
+  play1.onclick();
+  setTimeout(play2.onclick, 3000);
+  setTimeout(play3.onclick, 6000);
+  var bucle = setInterval(change, 9000);
+  var dos;
+  var tres;
+  function change() {
+    play1.onclick();
+    dos = setTimeout(play2.onclick, 3000);
+    tres = setTimeout(play3.onclick, 6000);
+  }
+  manual.onclick = () => {
+    console.log("Manual");
+    clearTimeout(dos);
+    clearTimeout(tres);
+    clearInterval(bucle);
+    document.getElementById("play1").disabled=false;
+    document.getElementById("play2").disabled=false;
+    document.getElementById("play3").disabled=false;
+    document.getElementById("test").disabled=false;
+  }
 }
 
 stop.onclick = () => {
