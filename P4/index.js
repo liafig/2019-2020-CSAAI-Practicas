@@ -96,19 +96,19 @@ auto.onclick = () => {
   play1.onclick();
   setTimeout(play2.onclick, 3000);
   setTimeout(play3.onclick, 6000);
-  var bucle = setInterval(change, 9000);
-  var dos;
-  var tres;
+  var repeat = setInterval(change, 9000);
+  var two;
+  var three;
   function change() {
     play1.onclick();
-    dos = setTimeout(play2.onclick, 3000);
-    tres = setTimeout(play3.onclick, 6000);
+    two = setTimeout(play2.onclick, 3000);
+    three = setTimeout(play3.onclick, 6000);
   }
   manual.onclick = () => {
     console.log("Manual");
-    clearTimeout(dos);
-    clearTimeout(tres);
-    clearInterval(bucle);
+    clearTimeout(two);
+    clearTimeout(three);
+    clearInterval(repeat);
     document.getElementById("play1").disabled=false;
     document.getElementById("play2").disabled=false;
     document.getElementById("play3").disabled=false;
@@ -116,8 +116,10 @@ auto.onclick = () => {
   }
 }
 
+
+
 stop.onclick = () => {
   monitor.pause();
-  monitor.src=null;
+  monitor.src="https://github.com/liafig/2019-2020-CSAAI-Videos/raw/master/color-bars.png";
   monitor.poster="https://github.com/liafig/2019-2020-CSAAI-Videos/raw/master/color-bars.png";
 }
