@@ -116,7 +116,25 @@ auto.onclick = () => {
   }
 }
 
-
+bucle.onclick = () => {
+  console.log("Bucle");
+  inicio = monitor.currentTime;
+  var loop = setInterval(restart, 2000);
+  function restart() {
+    monitor.currentTime = inicio;
+  }
+  manual.onclick = () => {
+    console.log("Manual");
+    clearInterval(loop);
+    if(monitor.src==video1.src){
+      monitor.currentTime = video1.currentTime+0.35;
+    }else if(monitor.src==video2.src){
+      monitor.currentTime = video2.currentTime+0.35;
+    }else{
+      monitor.currentTime = video3.currentTime+0.35;
+    }
+  }
+}
 
 stop.onclick = () => {
   monitor.pause();
