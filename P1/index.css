@@ -23,13 +23,7 @@ h2 {
 h3 {
   color: white;
   font-family: 'Homemade Apple', cursive;
-  text-align: center;
-}
-
-div {
-  color: darkblue;
-  text-align: center;
-  background-image: image("nube.png");
+  margin-left: 30px;
 }
 
 ul {
