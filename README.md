@@ -2,4 +2,7 @@
 Mis prácticas de la asignatura Construcción de Servicios y Aplicaciones Audiovisuales en Internet
 Curso 2019-2020  
 
-Este repositorio debe estar configurado como una página web
+CV:https://liafig.github.io/2019-2020-CSAAI-Practicas/P1
+Calculadora:https://liafig.github.io/2019-2020-CSAAI-Practicas/P2
+Pong: https://liafig.github.io/2019-2020-CSAAI-Practicas/P3
+Realizador de TV: https://liafig.github.io/2019-2020-CSAAI-Practicas/P4
