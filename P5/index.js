@@ -147,3 +147,23 @@ gray.onclick = () => {
   //-- Poner la imagen modificada en el canvas
   ctx.putImageData(imgData, 0, 0);
 }
+
+//-- Función de retrollamada al botón boca abajo
+mirror.onclick = () => {
+  let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  let data = imgData.data;
+  ctx.translate(img.width, 0);
+  ctx.scale(-1, 1);
+  ctx.drawImage(img, 0, 0, img.width, img.height);
+  ctx.putImageData(img, 0, 0);
+}
+
+//-- Función de retrollamada al botón boca abajo
+abajo.onclick = () => {
+  let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  let data = imgData.data;
+  ctx.translate(img.width-1, img.height-1);
+  ctx.rotate(Math.PI);
+  ctx.drawImage(img, 0, 0, img.width, img.height);
+  ctx.putImageData(img, 0, 0);
+}
