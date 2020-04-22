@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tratamiento de imágenes</title>
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <p id="original">Imagen Original</p>
+    <p id="manipulada">Imagen Manipulada</p>
+    <br>
+    <img src="FPGA.jpg" id="imagesrc">
+    <canvas id="canvas"></canvas>
+    <div class="panel">
+      <button id="gray">Gris</button>
+      <button id="colour">Color</button>
+      <p>Rojo:</p>
+      <input type="range" id="red" min="0" max="255" value="255"/>
+      <p id="value_r">00</p>
+      <p>Verde:</p>
+      <input type="range" id="green" min="0" max="255" value="255"/>
+      <p id="value_g">00</p>
+      <p>Azul:</p>
+      <input type="range" id="blue" min="0" max="255" value="255"/>
+      <p id="value_b">00</p>
+    </div>
+  </body>
+</html>
