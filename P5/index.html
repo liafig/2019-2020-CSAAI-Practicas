@@ -6,25 +6,48 @@
     <link rel="stylesheet" href="index.css">
     <title>Tratamiento de imágenes</title>
     <script src="index.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
   </head>
   <body>
-    <p id="original">Imagen Original</p>
-    <p id="manipulada">Imagen Manipulada</p>
-    <br>
-    <img src="image.jpg" id="imagesrc">
-    <canvas id="canvas"></canvas>
-    <div class="panel">
-      <button id="gray">Gris</button>
-      <button id="colour">Color</button>
-      <p>Rojo:</p>
-      <input type="range" id="red" min="0" max="255" value="255"/>
-      <p id="value_r">00</p>
-      <p>Verde:</p>
-      <input type="range" id="green" min="0" max="255" value="255"/>
-      <p id="value_g">00</p>
-      <p>Azul:</p>
-      <input type="range" id="blue" min="0" max="255" value="255"/>
-      <p id="value_b">00</p>
+    <div style="text-align:center;">
+      <section class="top_container">
+        <div class="right">
+          <p>Imagen Original</p>
+          <img src="image.png" id="imagesrc">
+        </div>
+        <div class="left">
+          <p>Imagen Manipulada</p>
+          <canvas id="canvas"></canvas>
+        </div>
+      </section>
+      <section class="b_container">
+        <div class="b1">
+          <button id="gray"><img src="gris.png"/></button>
+          <p>Gris</p>
+        </div>
+        <div class="b2">
+          <button id="colour"><img src="color.png"/></button>
+          <p>Color</p>
+        </div>
+      </section>
+      <br>
+      <section class="des_container">
+        <div class="des1">
+          <p>Rojo:</p>
+          <input type="range" id="red" min="0" max="255" value="255"/>
+          <p id="value_r">00</p>
+        </div>
+        <div class="des2">
+          <p>Verde:</p>
+          <input type="range" id="green" min="0" max="255" value="255"/>
+          <p id="value_g">00</p>
+        </div>
+        <div class="des3">
+          <p>Azul:</p>
+          <input type="range" id="blue" min="0" max="255" value="255"/>
+          <p id="value_b">00</p>
+        </div>
+      </section>
     </div>
   </body>
 </html>

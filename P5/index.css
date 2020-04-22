@@ -1,3 +1,117 @@
 body {
-  background-color: grey;
+  background-color: #292929;
+}
+
+canvas{
+    border: 5px solid white;
+}
+
+#imagesrc{
+    border: 5px solid white;
+}
+
+p{
+  color: white;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+}
+
+button {
+	display:inline-block;
+  cursor:pointer;
+}
+
+.top_container {
+  width: 80%;
+  height: 320px;
+  margin: auto;
+  padding: 10px;
+}
+
+.right {
+  width: 50%;
+  height: 300px;
+  float: left;
+}
+
+.left {
+  width: 50%;
+  height: 300px;
+  float: left;
+}
+
+.b_container {
+  width: 20%;
+  height: 160px;
+  margin: auto;
+  padding: 6px;
+}
+
+.b1 {
+  width: 50%;
+  float: left;
+}
+
+.b2 {
+  width: 50%;
+  float: left;
+}
+
+.des_container {
+  width: 80%;
+  height: 120px;
+  margin: auto;
+  padding: 10px;
+}
+
+.des1 {
+  width: 33%;
+  float: left;
+}
+
+.des2 {
+  width: 33%;
+  float: left;
+}
+
+.des3 {
+  width: 33%;
+  float: left;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  height: 4px;
+  border-radius: 5px;
+  background: #606060;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  width: 220px;
+  -webkit-transition: width .35s ease-in-out;
+  transition: width .35s ease-in-out;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+
+input[type=range]:focus {
+  width: 280px;
 }
