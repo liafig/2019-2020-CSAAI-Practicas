@@ -2,7 +2,7 @@ console.log('Ejecutando JS...');
 
 //-- Obtener elementos del DOM
 const canvas = document.getElementById('canvas');
-const img = document.getElementById('imagesrc')
+const img = document.getElementById('original')
 const ctx = canvas.getContext('2d');
 
 //-- Acceso a los deslizadores
@@ -21,18 +21,25 @@ const gray = document.getElementById('gray')
 //-- Botón RGB
 const colour = document.getElementById('colour')
 
-//-- Funcion de retrollamada de la imagen cargada
-//-- la imagen no se carga instantaneamete, sino que lleva tiempo.
-//-- Solo podemos acceder a ella una vez que este cargada totalmente.
+
+image1.onclick = () => {
+  console.log("Imagen 1");
+  img.src="image1.png"
+}
+image2.onclick = () => {
+  console.log("Imagen 2");
+  img.src="image2.jpg"
+}
+image3.onclick = () => {
+  console.log("Imagen 3");
+  img.src="image3.jpg"
+}
+
 img.onload = function(){
 
-  //-- Se establece como tamaño del canvas el mismo
-  //-- que el de la imagen original
   canvas.width = img.width;
   canvas.height = img.height;
 
-  //-- Situar la imagen original en el canvas.
-  //-- No se han hecho manipulaciones aun.
   ctx.drawImage(img, 0, 0);
 
   console.log("Imagen lista...");

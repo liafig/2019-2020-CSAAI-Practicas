@@ -11,13 +11,23 @@
   <body>
     <div style="text-align:center;">
       <section class="top_container">
-        <div class="right">
-          <p>Imagen Original</p>
-          <img src="image.png" id="imagesrc">
-        </div>
-        <div class="left">
-          <p>Imagen Manipulada</p>
-          <canvas id="canvas"></canvas>
+        <section class="monitores">
+          <div class="left">
+            <p>Imagen Original</p>
+            <img id="original" src="image1.png">
+          </div>
+          <div class="right">
+            <p>Imagen Manipulada</p>
+            <canvas id="canvas"></canvas>
+          </div>
+        </section>
+        <div class="selec">
+          <p>Selección</p>
+          <button id="image1"><img src="image1.png" width="130px"/></button>
+          <br><br>
+          <button id="image2"><img src="image2.jpg" width="130px"/></button>
+          <br><br>
+          <button id="image3"><img src="image3.jpg" width="130px"/></button>
         </div>
       </section>
       <section class="b_container">
