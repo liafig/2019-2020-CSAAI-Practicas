@@ -33,7 +33,7 @@ img.onload = function(){
 
   //-- Situar la imagen original en el canvas.
   //-- No se han hecho manipulaciones aun.
-  ctx.drawImage(img, 0,0);
+  ctx.drawImage(img, 0, 0);
 
   console.log("Imagen lista...");
 };
@@ -47,7 +47,7 @@ colour.onclick = () => {
 
     //-- Situar la imagen original en el canvas
     //-- No se han hecho manipulaciones todavia
-    ctx.drawImage(img, 0,0);
+    ctx.drawImage(img, 0, 0);
 
     //-- Obtener la imagen del canvas en pixeles
     let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -56,12 +56,64 @@ colour.onclick = () => {
     let data = imgData.data
 
     //-- Obtener el umbral de R del deslizador
-    umbral = des_r.value
+    umbral_r = des_r.value
 
     //-- Filtrar la imagen según el nuevo umbral
     for (let i = 0; i < data.length; i+=4) {
-      if (data[i] > umbral)
-        data[i] = umbral;
+      if (data[i] > umbral_r)
+        data[i] = umbral_r;
+    }
+
+    //-- Poner la imagen modificada en el canvas
+    ctx.putImageData(imgData, 0, 0);
+  }
+  des_g.oninput = () => {
+    //-- Mostrar el nuevo valor del deslizador
+    value_g.innerHTML = des_g.value;
+
+    //-- Situar la imagen original en el canvas
+    //-- No se han hecho manipulaciones todavia
+    ctx.drawImage(img, 0, 0);
+
+    //-- Obtener la imagen del canvas en pixeles
+    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    //-- Obtener el array con todos los píxeles
+    let data = imgData.data
+
+    //-- Obtener el umbral de R del deslizador
+    umbral_g = des_g.value
+
+    //-- Filtrar la imagen según el nuevo umbral
+    for (let i = 0; i < data.length; i+=4) {
+      if (data[i+1] > umbral_g)
+        data[i+1] = umbral_g;
+    }
+
+    //-- Poner la imagen modificada en el canvas
+    ctx.putImageData(imgData, 0, 0);
+  }
+  des_b.oninput = () => {
+    //-- Mostrar el nuevo valor del deslizador
+    value_b.innerHTML = des_b.value;
+
+    //-- Situar la imagen original en el canvas
+    //-- No se han hecho manipulaciones todavia
+    ctx.drawImage(img, 0, 0);
+
+    //-- Obtener la imagen del canvas en pixeles
+    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    //-- Obtener el array con todos los píxeles
+    let data = imgData.data
+
+    //-- Obtener el umbral de R del deslizador
+    umbral_b = des_b.value
+
+    //-- Filtrar la imagen según el nuevo umbral
+    for (let i = 0; i < data.length; i+=4) {
+      if (data[i+2] > umbral_b)
+        data[i+2] = umbral_b;
     }
 
     //-- Poner la imagen modificada en el canvas
