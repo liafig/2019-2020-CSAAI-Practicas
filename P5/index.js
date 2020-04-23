@@ -7,13 +7,15 @@ const ctx = canvas.getContext('2d');
 
 //-- Acceso a los deslizadores
 const des_r = document.getElementById('red');
-const des_g = document.getElementById('green')
-const des_b = document.getElementById('blue')
+const des_g = document.getElementById('green');
+const des_b = document.getElementById('blue');
+const des_t= document.getElementById('t');
 
 //-- Valor de los deslizadores
 const value_r = document.getElementById('value_r');
 const value_g = document.getElementById('value_g');
 const value_b = document.getElementById('value_b');
+const value_t = document.getElementById('value_t');
 
 //-- Botón grises
 const gray = document.getElementById('gray')
@@ -22,7 +24,8 @@ const gray = document.getElementById('gray')
 const colour = document.getElementById('colour')
 
 //-- Deslizadores
-const slide = document.getElementById('show')
+const slide1 = document.getElementById('show_c')
+const slide2 = document.getElementById('show_t')
 
 //-- Selección de imágenes
 image1.onclick = () => {
@@ -78,8 +81,18 @@ function RGB() {
 }
 
 //-- Función de aparición de deslizadores
-function show_slides() {
-  var x = document.getElementById("show");
+function show_slides1() {
+  var x = document.getElementById("show_c");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  }else{
+    x.style.display = "none";
+  }
+}
+
+//-- Función de aparición de deslizadores
+function show_slides2() {
+  var x = document.getElementById("show_t");
   if (x.style.display === "none") {
     x.style.display = "block";
   }else{
@@ -89,7 +102,8 @@ function show_slides() {
 
 //-- Función de retrollamada al botón colores
 colour.onclick = () => {
-  show_slides();
+  slide2.style.display = "none";
+  show_slides1();
   ctx.drawImage(img, 0, 0);
   des_r.oninput = () => {
     RGB();
@@ -104,7 +118,8 @@ colour.onclick = () => {
 
 //-- Función de retrollamada al botón grises
 gray.onclick = () => {
-  slide.style.display = "none";
+  slide1.style.display = "none";
+  slide2.style.display = "none";
   var brightness = 0;
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   let data = imgData.data;
@@ -119,7 +134,8 @@ gray.onclick = () => {
 
 //-- Función de retrollamada al botón boca abajo
 mirror.onclick = () => {
-  slide.style.display = "none";
+  slide1.style.display = "none";
+  slide2.style.display = "none";
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   let data = imgData.data;
   ctx.translate(img.width, 0);
@@ -130,7 +146,8 @@ mirror.onclick = () => {
 
 //-- Función de retrollamada al botón boca abajo
 down.onclick = () => {
-  slide.style.display = "none";
+  slide1.style.display = "none";
+  slide2.style.display = "none";
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   let data = imgData.data;
   ctx.translate(img.width-1, img.height-1);
@@ -141,7 +158,8 @@ down.onclick = () => {
 
 //-- Función de retrollamada al botón ruido
 noise.onclick = () => {
-  slide.style.display = "none";
+  slide1.style.display = "none";
+  slide2.style.display = "none";
   var noise = 0;
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   let data = imgData.data;
@@ -150,6 +168,39 @@ noise.onclick = () => {
     data[i] += noise;
     data[i+1] += noise;
     data[i+2] += noise;
+  }
+  ctx.putImageData(imgData, 0, 0);
+}
+
+//-- Funcion de retrollamada al botón transparencia
+transp.onclick = () => {
+  slide1.style.display = "none";
+  show_slides2();
+  des_t.oninput = () => {
+    value_t.innerHTML = des_t.value;
+    ctx.drawImage(img, 0,0);
+    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    let data = imgData.data
+    umbral = des_t.value
+    for (let i = 0; i < data.length; i+=4) {
+      if (data[i+3] > umbral) //-- Si es mayor que el umbralm le asignamos el valor umbral
+        data[i+3] = umbral;
+      }
+    ctx.putImageData(imgData, 0, 0);
+  }
+}
+
+//-- Funcion de retrollamada al botón negativo
+negativo.onclick = () => {
+  slide1.style.display = "none";
+  slide2.style.display = "none";
+  ctx.drawImage(img, 0,0);
+  let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  let data = imgData.data;
+  for (var i = 0; i < data.length; i+=4 ) {
+    data[i] = 255 - data[i];
+    data[i+1] = 255 - data[i+1];
+    data[i+2] = 255 - data[i+2];
   }
   ctx.putImageData(imgData, 0, 0);
 }
