@@ -75,6 +75,7 @@ function RGB() {
 
 //-- Función de retrollamada al botón colores
 colour.onclick = () => {
+  ctx.drawImage(img, 0, 0);
   des_r.oninput = () => {
     RGB();
   }
