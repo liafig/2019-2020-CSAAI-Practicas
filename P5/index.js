@@ -45,51 +45,44 @@ img.onload = function(){
   console.log("Imagen lista...");
 };
 
-//-- Funcion de retrollamada al botón RGB
+function RGB() {
+  //-- Mostrar el nuevo valor del deslizador
+  value_r.innerHTML = des_r.value;
+  value_g.innerHTML = des_g.value;
+  value_b.innerHTML = des_b.value;
+  //-- Situar la imagen original en el canvas
+  ctx.drawImage(img, 0, 0);
+  //-- Obtener la imagen del canvas en pixeles
+  let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  //-- Obtener el array con todos los píxeles
+  let data = imgData.data
+  //-- Obtener el umbral del deslizador
+  umbral_r = des_r.value
+  umbral_g = des_g.value
+  umbral_b = des_b.value
+  //-- Filtrar la imagen según el nuevo umbral
+  for (let i = 0; i < data.length; i+=4) {
+    if (data[i] > umbral_r)
+      data[i] = umbral_r;
+    if (data[i+1] > umbral_g)
+      data[i+1] = umbral_g;
+    if (data[i+2] > umbral_b)
+      data[i+2] = umbral_b;
+  }
+  //-- Poner la imagen modificada en el canvas
+  ctx.putImageData(imgData, 0, 0);
+}
+
+//-- Función de retrollamada al botón colores
 colour.onclick = () => {
-  //-- Funcion de retrollamada del deslizador
   des_r.oninput = () => {
-    //-- Mostrar el nuevo valor del deslizador
-    value_r.innerHTML = des_r.value;
-    //-- Situar la imagen original en el canvas
-    ctx.drawImage(img, 0, 0);
-    //-- Obtener la imagen del canvas en pixeles
-    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    //-- Obtener el array con todos los píxeles
-    let data = imgData.data
-    //-- Obtener el umbral de R del deslizador
-    umbral_r = des_r.value
-    //-- Filtrar la imagen según el nuevo umbral
-    for (let i = 0; i < data.length; i+=4) {
-      if (data[i] > umbral_r)
-        data[i] = umbral_r;
-    }
-    //-- Poner la imagen modificada en el canvas
-    ctx.putImageData(imgData, 0, 0);
+    RGB();
   }
   des_g.oninput = () => {
-    value_g.innerHTML = des_g.value;
-    ctx.drawImage(img, 0, 0);
-    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    let data = imgData.data
-    umbral_g = des_g.value
-    for (let i = 0; i < data.length; i+=4) {
-      if (data[i+1] > umbral_g)
-        data[i+1] = umbral_g;
-    }
-    ctx.putImageData(imgData, 0, 0);
+    RGB();
   }
   des_b.oninput = () => {
-    value_b.innerHTML = des_b.value;
-    ctx.drawImage(img, 0, 0);
-    let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    let data = imgData.data
-    umbral_b = des_b.value
-    for (let i = 0; i < data.length; i+=4) {
-      if (data[i+2] > umbral_b)
-        data[i+2] = umbral_b;
-    }
-    ctx.putImageData(imgData, 0, 0);
+    RGB();
   }
 }
 
