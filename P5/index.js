@@ -21,7 +21,7 @@ const gray = document.getElementById('gray')
 //-- Botón RGB
 const colour = document.getElementById('colour')
 
-
+//-- Selección de imágenes
 image1.onclick = () => {
   console.log("Imagen 1");
   img.src="image1.png"
@@ -35,8 +35,8 @@ image3.onclick = () => {
   img.src="image3.jpg"
 }
 
+//-- Función de retrollamada de imagen cargada
 img.onload = function(){
-
   canvas.width = img.width;
   canvas.height = img.height;
 
@@ -51,79 +51,44 @@ colour.onclick = () => {
   des_r.oninput = () => {
     //-- Mostrar el nuevo valor del deslizador
     value_r.innerHTML = des_r.value;
-
     //-- Situar la imagen original en el canvas
-    //-- No se han hecho manipulaciones todavia
     ctx.drawImage(img, 0, 0);
-
     //-- Obtener la imagen del canvas en pixeles
     let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
     //-- Obtener el array con todos los píxeles
     let data = imgData.data
-
     //-- Obtener el umbral de R del deslizador
     umbral_r = des_r.value
-
     //-- Filtrar la imagen según el nuevo umbral
     for (let i = 0; i < data.length; i+=4) {
       if (data[i] > umbral_r)
         data[i] = umbral_r;
     }
-
     //-- Poner la imagen modificada en el canvas
     ctx.putImageData(imgData, 0, 0);
   }
   des_g.oninput = () => {
-    //-- Mostrar el nuevo valor del deslizador
     value_g.innerHTML = des_g.value;
-
-    //-- Situar la imagen original en el canvas
-    //-- No se han hecho manipulaciones todavia
     ctx.drawImage(img, 0, 0);
-
-    //-- Obtener la imagen del canvas en pixeles
     let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-    //-- Obtener el array con todos los píxeles
     let data = imgData.data
-
-    //-- Obtener el umbral de R del deslizador
     umbral_g = des_g.value
-
-    //-- Filtrar la imagen según el nuevo umbral
     for (let i = 0; i < data.length; i+=4) {
       if (data[i+1] > umbral_g)
         data[i+1] = umbral_g;
     }
-
-    //-- Poner la imagen modificada en el canvas
     ctx.putImageData(imgData, 0, 0);
   }
   des_b.oninput = () => {
-    //-- Mostrar el nuevo valor del deslizador
     value_b.innerHTML = des_b.value;
-
-    //-- Situar la imagen original en el canvas
-    //-- No se han hecho manipulaciones todavia
     ctx.drawImage(img, 0, 0);
-
-    //-- Obtener la imagen del canvas en pixeles
     let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-    //-- Obtener el array con todos los píxeles
     let data = imgData.data
-
-    //-- Obtener el umbral de R del deslizador
     umbral_b = des_b.value
-
-    //-- Filtrar la imagen según el nuevo umbral
     for (let i = 0; i < data.length; i+=4) {
       if (data[i+2] > umbral_b)
         data[i+2] = umbral_b;
     }
-
-    //-- Poner la imagen modificada en el canvas
     ctx.putImageData(imgData, 0, 0);
   }
 }
@@ -131,20 +96,14 @@ colour.onclick = () => {
 //-- Función de retrollamada al botón grises
 gray.onclick = () => {
   var brightness = 0;
-  //-- Obtener la imagen del canvas en pixeles
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-  //-- Obtener el array con todos los pixeles
   let data = imgData.data;
-
   for (var i = 0; i < data.length; i+=4) {
     brightness = (3 * data[i] + 4 * data[i+1] + data[i+2])/8
     data[i] = brightness;
     data[i+1] = brightness;
     data[i+2] = brightness;
   }
-
-  //-- Poner la imagen modificada en el canvas
   ctx.putImageData(imgData, 0, 0);
 }
 
@@ -159,11 +118,25 @@ mirror.onclick = () => {
 }
 
 //-- Función de retrollamada al botón boca abajo
-abajo.onclick = () => {
+down.onclick = () => {
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   let data = imgData.data;
   ctx.translate(img.width-1, img.height-1);
   ctx.rotate(Math.PI);
   ctx.drawImage(img, 0, 0, img.width, img.height);
   ctx.putImageData(img, 0, 0);
+}
+
+//-- Función de retrollamada al botón ruido
+noise.onclick = () => {
+  var noise = 0;
+  let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  let data = imgData.data;
+  for (var i = 0; i < data.length; i+=4) {
+    noise = Math.floor(Math.random() * (70 + 70 + 1) - 70)
+    data[i] += noise;
+    data[i+1] += noise;
+    data[i+2] += noise;
+  }
+  ctx.putImageData(imgData, 0, 0);
 }
