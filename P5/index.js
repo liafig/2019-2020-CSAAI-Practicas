@@ -21,6 +21,9 @@ const gray = document.getElementById('gray')
 //-- Botón RGB
 const colour = document.getElementById('colour')
 
+//-- Deslizadores
+const slide = document.getElementById('show')
+
 //-- Selección de imágenes
 image1.onclick = () => {
   console.log("Imagen 1");
@@ -45,6 +48,7 @@ img.onload = function(){
   console.log("Imagen lista...");
 };
 
+//-- Función colores
 function RGB() {
   //-- Mostrar el nuevo valor del deslizador
   value_r.innerHTML = des_r.value;
@@ -73,8 +77,19 @@ function RGB() {
   ctx.putImageData(imgData, 0, 0);
 }
 
+//-- Función de aparición de deslizadores
+function show_slides() {
+  var x = document.getElementById("show");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  }else{
+    x.style.display = "none";
+  }
+}
+
 //-- Función de retrollamada al botón colores
 colour.onclick = () => {
+  show_slides();
   ctx.drawImage(img, 0, 0);
   des_r.oninput = () => {
     RGB();
@@ -89,6 +104,7 @@ colour.onclick = () => {
 
 //-- Función de retrollamada al botón grises
 gray.onclick = () => {
+  slide.style.display = "none";
   var brightness = 0;
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   let data = imgData.data;
@@ -103,6 +119,7 @@ gray.onclick = () => {
 
 //-- Función de retrollamada al botón boca abajo
 mirror.onclick = () => {
+  slide.style.display = "none";
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   let data = imgData.data;
   ctx.translate(img.width, 0);
@@ -113,6 +130,7 @@ mirror.onclick = () => {
 
 //-- Función de retrollamada al botón boca abajo
 down.onclick = () => {
+  slide.style.display = "none";
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   let data = imgData.data;
   ctx.translate(img.width-1, img.height-1);
@@ -123,6 +141,7 @@ down.onclick = () => {
 
 //-- Función de retrollamada al botón ruido
 noise.onclick = () => {
+  slide.style.display = "none";
   var noise = 0;
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   let data = imgData.data;
