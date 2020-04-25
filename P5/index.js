@@ -45,9 +45,7 @@ image3.onclick = () => {
 img.onload = function(){
   canvas.width = img.width;
   canvas.height = img.height;
-
   ctx.drawImage(img, 0, 0);
-
   console.log("Imagen lista...");
 };
 
