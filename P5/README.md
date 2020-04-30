@@ -9,4 +9,3 @@ El botón TRANSPARENCIA dispone de una barra deslizante para aumentar o disminui
 Finalmente, al pulsar el botón NEGATIVO se transforma la imagen a su negativo.
 
 Enlace: https://liafig.github.io/2019-2020-CSAAI-Practicas/P5
-Navegador preferente: Firefox
